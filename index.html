@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tris</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+             <h1>Tris</h1>
+        <div class="draggable" draggable="true">X</div>
+        <div class="draggable" draggable="true">O</div>
+        <br>
+        <button id="resetButton" class="draggable" style="color: whitesmoke;cursor: pointer;">RESET</button>
+        </div>
+       
+        
+        <div class="board">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cells = document.querySelectorAll('.cell');
+            const draggableElements = document.querySelectorAll('.draggable');
+            const resetButton = document.getElementById('resetButton'); // Selezioniamo il pulsante di reset
+
+            draggableElements.forEach(draggable => {
+                draggable.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text', e.target.textContent);
+                });
+            });
+
+            cells.forEach(cell => {
+                cell.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                });
+
+                cell.addEventListener('drop', (e) => {
+                    if (!e.target.textContent) {
+                        const symbol = e.dataTransfer.getData('text');
+                        e.target.textContent = symbol;
+                        e.target.classList.add(symbol);
+                        checkForWinner();
+                    }
+                });
+            });
+
+            resetButton.addEventListener('click', () => { // Aggiungiamo l'evento click al pulsante di reset
+                cells.forEach(cell => {
+                    cell.textContent = ''; // Resetta il contenuto delle celle
+                    cell.classList.remove('X', 'O', 'winning'); // Rimuove tutte le classi
+                });
+            });
+
+            function checkForWinner() {
+                const winningCombinations = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8], // righe
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8], // colonne
+                    [0, 4, 8], [2, 4, 6]             // diagonali
+                ];
+
+                winningCombinations.forEach(combination => {
+                    const [a, b, c] = combination;
+                    if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
+                        cells[a].classList.add('winning');
+                        cells[b].classList.add('winning');
+                        cells[c].classList.add('winning');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
