@@ -48,6 +48,8 @@ function resettaGioco() {
     document.getElementById("X").style.opacity=1;
     document.getElementById("O").style.backgroundColor="black";
     document.getElementById("O").style.opacity=1;
+    document.getElementById("O").setAttribute('draggable','true');
+    document.getElementById("X").setAttribute('draggable','true');
 }
 
 
