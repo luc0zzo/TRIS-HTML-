@@ -1,0 +1,142 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    user-select: none;
+    -ms-user-select: none;
+}
+
+.container {
+    background-color: black;
+}
+
+.campo {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    
+}
+
+.top {
+    display: block;
+}
+
+.cella {
+    transition: 0.5s ease-in-out;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 3rem;
+    color: whitesmoke;
+}
+
+.cella.X::after {
+    font-size: 3em;
+    color: blue;
+}
+
+.cella.O::after {
+    font-size: 3em;
+    color: red;
+}
+
+.cella.vinta {
+    background-color: #55ff00;
+    transition: 0.5s ease-in-out;
+    color: black;
+    
+}
+
+.top {
+    text-align: center;
+}
+
+.top h1 {
+    animation: titoloAnimazione 2s ease-out;
+    transform-origin: left center;
+    font-size: 4rem;
+    white-space: nowrap;
+}
+
+@keyframes titoloAnimazione {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.draggable {
+    width: 40%;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    margin: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+.draggable:hover {
+    border-radius: 15px;
+    border: 0.6vh solid white;
+}
+
+button {
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 2vh;
+    color: rgba(255, 255, 255, 0.597);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    opacity: 0.6;
+}
+
+button:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.8;
+    color: rgb(0, 0, 0);
+    border: 2px solid white;
+    transform: scale(1.1);
+}
+.X{
+    content: 'X';
+    font-size: 3rem;
+    color: whitesmoke;
+}
+.O{
+    content: 'O';
+    font-size: 3rem;
+    color: whitesmoke;
+}
+.cella.X::after {
+    content: 'X';
+    font-size: 3rem;
+    color: blue;
+}
+
+.cella.O::after {
+    content: 'O';
+    font-size: 3rem;
+    color: red;
+}

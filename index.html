@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tris</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Tris</h1>
+            <br>
+            
+            <!-- Simboli X e O per il gioco del tris -->
+            <div draggable="true" class="draggable" data-content="X" id="X"  ondragstart="trascinato(event)">X</div>
+            <div draggable="true" class="draggable" data-content="O" id="O" ondragstart="trascinato(event)">O</div>
+            <br> <br> <br> <hr>
+            <!-- Bottone di reset -->
+            <br><button onclick="resettaGioco()">RESET</button> <br> <br>
+            <hr>
+        </div>
+        
+        <div class="campo">
+            <!-- celle del campo (9 celle) -->
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+            <div class="cella" ondrop="rilascioElemento(event)" ondragover="event.preventDefault()"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
